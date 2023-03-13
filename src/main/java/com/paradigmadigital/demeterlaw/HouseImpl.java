@@ -13,4 +13,9 @@ public class HouseImpl implements House {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String getZipCode() {
+        return address.getZipCode();
+    }
 }

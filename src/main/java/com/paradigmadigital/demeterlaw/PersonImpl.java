@@ -13,4 +13,9 @@ public class PersonImpl implements Person {
     public void setHouse(House house) {
         this.house = house;
     }
+
+    @Override
+    public String getZipCode() {
+        return house.getZipCode();
+    }
 }

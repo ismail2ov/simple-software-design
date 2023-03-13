@@ -18,7 +18,7 @@ class PersonTest {
         Person person = new PersonImpl();
         person.setHouse(house);
 
-        String personZipCode = person.getHouse().getAddress().getZipCode();
+        String personZipCode = person.getZipCode();
         assertThat(personZipCode).isNotNull();
     }
 
