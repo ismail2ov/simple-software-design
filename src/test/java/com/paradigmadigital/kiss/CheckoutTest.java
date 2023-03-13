@@ -10,7 +10,7 @@ class CheckoutTest {
     void validateCart() {
         Checkout checkout = new Checkout();
 
-        boolean actual = checkout.validateCart();
+        boolean actual = checkout.validate();
 
         assertThat(actual).isTrue();
     }
