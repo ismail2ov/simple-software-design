@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -18,18 +17,17 @@ class UserTest {
 
     @Test
     void testSetUserName() {
-        user.name = "Luke Skywalker";
+        user.setName("Luke Skywalker");
 
-        String actual = user.name;
+        String actual = user.getName();
 
         assertThat(actual).isEqualTo("Luke Skywalker");
     }
 
-    @Disabled
     @Test
     void whenNameIsNullThenThrowException() {
 
-        Throwable thrown = catchThrowable(() -> user.name = null);
+        Throwable thrown = catchThrowable(() -> user.setName(null));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
             .hasMessageStartingWith("Argument for @NotNull parameter 'name'");

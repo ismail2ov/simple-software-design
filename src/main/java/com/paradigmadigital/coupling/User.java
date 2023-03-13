@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class User {
 
-    public String name;
+    private String name;
 
     public String getName() {
         return Objects.requireNonNullElse(name, "not initiaized");
