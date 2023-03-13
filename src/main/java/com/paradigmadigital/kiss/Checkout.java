@@ -16,8 +16,35 @@ public class Checkout {
         payment = new Payment();
     }
 
-    public boolean validateCart() {
+    public boolean validate() {
+        validateCart();
+        validateDelivery();
+        validatePayment();
 
+        return true;
+    }
+
+    private void validatePayment() {
+        if (!payment.hasPaymentMethods()) {
+            throw new PaymentException("No payment methods");
+        }
+
+        if (!payment.isCompulsiveBuyer()) {
+            throw new PaymentException("Are you a compulsive buyer signed");
+        }
+    }
+
+    private void validateDelivery() {
+        if (!delivery.checkAddress()) {
+            throw new DeliveryException("Invalid address");
+        }
+
+        if (!delivery.hasCarrier()) {
+            throw new DeliveryException("No carrier");
+        }
+    }
+
+    private void validateCart() {
         if (cart.getNumProducts() <= 0) {
             throw new CartException("The cart is empty");
         }
@@ -33,23 +60,5 @@ public class Checkout {
         if (!cart.checkStock()) {
             throw new CartException("No hay stock");
         }
-
-        if (!delivery.checkAddress()) {
-            throw new DeliveryException("Invalid address");
-        }
-
-        if (!delivery.hasCarrier()) {
-            throw new DeliveryException("No carrier");
-        }
-
-        if (!payment.hasPaymentMethods()) {
-            throw new PaymentException("No payment methods");
-        }
-
-        if (!payment.isCompulsiveBuyer()) {
-            throw new PaymentException("Are you a compulsive buyer signed");
-        }
-
-        return true;
     }
 }
